@@ -1,3 +1,5 @@
+const EMPTY_CELL = ".";
+
 export class Board {
   width;
   height;
@@ -22,7 +24,7 @@ export class Board {
     let board = "";
     for (let row = 0; row < this.height; row++) {
       for (let col = 0; col < this.width; col++) {
-        board += this.shape && row === this.ticks && col === 1 ? this.shape : ".";
+        board += this.shape && row === this.ticks && col === 1 ? this.shape : EMPTY_CELL;
       }
       board += "\n";
     }
