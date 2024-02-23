@@ -13,7 +13,7 @@ export class Board {
   }
 
   drop(shape) {
-    if (this.shape) {
+    if (this.hasFalling()) {
       throw new Error("already falling");
     }
     this.shape = shape;
@@ -21,6 +21,10 @@ export class Board {
 
   tick() {
     this.ticks++;
+  }
+
+  hasFalling() {
+    return !!this.shape;
   }
 
   toString() {
