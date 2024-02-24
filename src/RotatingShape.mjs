@@ -24,6 +24,17 @@ export class RotatingShape {
         }
         return new RotatingShape(rotatedCells);
     }
+
+    rotateLeft() {
+        const rotatedCells = [];
+        for (let row = 0; row < 3; row++) {
+            rotatedCells[row] = [];
+            for (let col = 0; col < 3; col++) {
+                rotatedCells[row][col] = this.#cells[col][2 - row];
+            }
+        }
+        return new RotatingShape(rotatedCells);
+    }
   
     toString() {
       const shape = [];
