@@ -73,3 +73,26 @@ describe("Rotating 5x5 shape", () => {
     );
   });
 });
+
+describe("Rotating 2x3 shape", () => {
+  const shape = RotatingShape.fromString(
+    `ABC
+     DEF`
+  );
+
+  test("can be rotated right/clockwise", () => {
+    expect(shape.rotateRight().toString()).to.equalShape(
+      `DA
+       EB
+       FC`
+    );
+  });
+
+  test("can be rotated left/counter-clockwise", () => {
+    expect(shape.rotateLeft().toString()).to.equalShape(
+      `CF
+       BE
+       AD`
+    );
+  });
+});
