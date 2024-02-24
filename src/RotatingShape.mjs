@@ -15,11 +15,13 @@ export class RotatingShape {
     }
 
     rotateRight() {
-        const rotatedCells = [
-            [this.#cells[2][0], this.#cells[1][0], this.#cells[0][0]],
-            [this.#cells[2][1], this.#cells[1][1], this.#cells[0][1]],
-            [this.#cells[2][2], this.#cells[1][2], this.#cells[0][2]],
-        ];
+        const rotatedCells = [];
+        for (let row = 0; row < 3; row++) {
+            rotatedCells[row] = [];
+            for (let col = 0; col < 3; col++) {
+                rotatedCells[row][col] = this.#cells[2 - col][row];
+            }
+        }
         return new RotatingShape(rotatedCells);
     }
   
