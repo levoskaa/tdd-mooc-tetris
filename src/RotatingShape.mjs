@@ -1,3 +1,5 @@
+import { Position } from "./Position.mjs";
+
 const RotateDirection = {
   LEFT: "LEFT",
   RIGHT: "RIGHT",
@@ -41,10 +43,10 @@ export class RotatingShape {
 
   #rotateCell(row, col, direction) {
     if (direction === RotateDirection.RIGHT) {
-      return { row: 2 - col, col: row };
+      return new Position(2 - col, row);
     }
     if (direction === RotateDirection.LEFT) {
-      return { row: col, col: 2 - row };
+      return new Position(col, 2 - row);
     }
     throw new Error(`Invalid direction for rotation: "${direction}"`);
   }
