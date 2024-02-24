@@ -24,11 +24,15 @@ export class Board {
   }
 
   tick() {
-    if (this.ticks === this.height - 1) {
+    if (this.#reachedBottom()) {
       this.cells[this.ticks][1] = this.shape;
       this.shape = null;
     }
     this.ticks++;
+  }
+
+  #reachedBottom() {
+    return this.ticks === this.height - 1;
   }
 
   hasFalling() {
@@ -39,10 +43,14 @@ export class Board {
     const board = [];
     for (let row = 0; row < this.height; row++) {
       for (let col = 0; col < this.width; col++) {
-        board.push(this.hasFalling() && row === this.ticks && col === 1 ? this.shape : this.cells[row][col]);
+        board.push(this.#shapeAt(row, col));
       }
       board.push("\n");
     }
     return board.join("");
+  }
+
+  #shapeAt(row, col) {
+    return this.hasFalling() && row === this.ticks && col === 1 ? this.shape : this.cells[row][col];
   }
 }
