@@ -30,12 +30,11 @@ export class RotatingShape {
   }
 
   #rotate(direction) {
-    const rotatedCells = [];
+    const rotatedCells = Array.from({ length: 3 }, (_) => []);
     for (let row = 0; row < 3; row++) {
-      rotatedCells[row] = [];
       for (let col = 0; col < 3; col++) {
         const rotatedCell = this.#rotateCell(row, col, direction);
-        rotatedCells[row][col] = this.#cells[rotatedCell.row][rotatedCell.col];
+        rotatedCells[rotatedCell.row][rotatedCell.col] = this.#cells[row][col];
       }
     }
     return new RotatingShape(rotatedCells);
@@ -43,10 +42,10 @@ export class RotatingShape {
 
   #rotateCell(row, col, direction) {
     if (direction === RotateDirection.RIGHT) {
-      return new Position(2 - col, row);
+      return new Position(col, 2 - row);
     }
     if (direction === RotateDirection.LEFT) {
-      return new Position(col, 2 - row);
+      return new Position(2 - col, row);
     }
     throw new Error(`Invalid direction for rotation: "${direction}"`);
   }
