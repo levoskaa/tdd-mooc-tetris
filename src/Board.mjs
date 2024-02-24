@@ -25,7 +25,7 @@ export class Board {
   }
 
   tick() {
-    if (this.#reachedBottom()) {
+    if (this.#reachedBottom() || this.#collidedWithBlock()) {
       this.cells[this.ticks][1] = this.shape;
       this.shape = null;
     }
@@ -33,7 +33,11 @@ export class Board {
   }
 
   #reachedBottom() {
-    return this.ticks === this.height - 1 || this.cells[this.ticks + 1][1] !== EMPTY_CELL;
+    return this.ticks === this.height - 1;
+  }
+
+  #collidedWithBlock() {
+    return this.cells[this.ticks + 1][1] !== EMPTY_CELL;
   }
 
   hasFalling() {
