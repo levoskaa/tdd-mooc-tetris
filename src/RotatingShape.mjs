@@ -19,7 +19,8 @@ export class RotatingShape {
         for (let row = 0; row < 3; row++) {
             rotatedCells[row] = [];
             for (let col = 0; col < 3; col++) {
-                rotatedCells[row][col] = this.#cells[2 - col][row];
+                const rotatedCell = this.#rotateCell(row, col, "right");
+                rotatedCells[row][col] = this.#cells[rotatedCell.row][rotatedCell.col];
             }
         }
         return new RotatingShape(rotatedCells);
@@ -30,10 +31,19 @@ export class RotatingShape {
         for (let row = 0; row < 3; row++) {
             rotatedCells[row] = [];
             for (let col = 0; col < 3; col++) {
-                rotatedCells[row][col] = this.#cells[col][2 - row];
+                const rotatedCell = this.#rotateCell(row, col, "left");
+                rotatedCells[row][col] = this.#cells[rotatedCell.row][rotatedCell.col];
             }
         }
         return new RotatingShape(rotatedCells);
+    }
+
+    #rotateCell(row, col, direction) {
+        if (direction === "right") {
+            return { row: 2 - col, col: row };
+        } else {
+            return { row: col, col: 2 - row };
+        }
     }
   
     toString() {
