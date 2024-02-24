@@ -1,16 +1,17 @@
 export class RotatingShape {
     #cells;
   
-    constructor() {
-      this.#cells = [
-          ["A", "B", "C"],
-          ["D", "E", "F"],
-          ["G", "H", "I"],
-      ];
+    constructor(cells) {
+      this.#cells = cells;
     }
   
-    static fromString() {
-      return new RotatingShape();
+    static fromString(string) {
+      const rows = string.replaceAll(" ", "").split("\n");
+      const cells = [];
+      for (const row of rows) {
+        cells.push(row.split(""));
+      }
+      return new RotatingShape(cells);
     }
   
     toString() {
