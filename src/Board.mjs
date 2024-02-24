@@ -36,13 +36,13 @@ export class Board {
   }
 
   toString() {
-    let board = "";
+    const board = [];
     for (let row = 0; row < this.height; row++) {
       for (let col = 0; col < this.width; col++) {
-        board += this.hasFalling() && row === this.ticks && col === 1 ? this.shape : this.cells[row][col];
+        board.push(this.hasFalling() && row === this.ticks && col === 1 ? this.shape : this.cells[row][col]);
       }
-      board += "\n";
+      board.push("\n");
     }
-    return board;
+    return board.join("");
   }
 }
