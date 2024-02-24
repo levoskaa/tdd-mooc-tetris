@@ -1,3 +1,8 @@
+const RotateDirection = {
+  LEFT: "LEFT",
+  RIGHT: "RIGHT",
+};
+
 export class RotatingShape {
   #cells;
 
@@ -15,11 +20,11 @@ export class RotatingShape {
   }
 
   rotateRight() {
-    return this.#rotate("right");
+    return this.#rotate(RotateDirection.RIGHT);
   }
 
   rotateLeft() {
-    return this.#rotate("left");
+    return this.#rotate(RotateDirection.LEFT);
   }
 
   #rotate(direction) {
@@ -35,11 +40,13 @@ export class RotatingShape {
   }
 
   #rotateCell(row, col, direction) {
-    if (direction === "right") {
+    if (direction === RotateDirection.RIGHT) {
       return { row: 2 - col, col: row };
-    } else {
+    }
+    if (direction === RotateDirection.LEFT) {
       return { row: col, col: 2 - row };
     }
+    throw new Error(`Invalid direction for rotation: "${direction}"`);
   }
 
   toString() {
