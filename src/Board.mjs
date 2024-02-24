@@ -1,18 +1,18 @@
 const EMPTY_CELL = ".";
 
 export class Board {
-  width;
-  height;
-  shape;
-  cells;
-  ticks = 0;
+  #width;
+  #height;
+  #shape;
+  #cells;
+  #ticks = 0;
 
   constructor(width, height) {
-    this.width = width;
-    this.height = height;
-    this.cells = new Array(height).fill(EMPTY_CELL);
+    this.#width = width;
+    this.#height = height;
+    this.#cells = new Array(height).fill(EMPTY_CELL);
     for (let row = 0; row < height; row++) {
-      this.cells[row] = new Array(width).fill(EMPTY_CELL);
+      this.#cells[row] = new Array(width).fill(EMPTY_CELL);
     }
   }
 
@@ -20,34 +20,34 @@ export class Board {
     if (this.hasFalling()) {
       throw new Error("A shape is already falling");
     }
-    this.shape = shape;
-    this.ticks = 0;
+    this.#shape = shape;
+    this.#ticks = 0;
   }
 
   tick() {
     if (this.#reachedBottom() || this.#collidedWithBlock()) {
-      this.cells[this.ticks][1] = this.shape;
-      this.shape = null;
+      this.#cells[this.#ticks][1] = this.#shape;
+      this.#shape = null;
     }
-    this.ticks++;
+    this.#ticks++;
   }
 
   #reachedBottom() {
-    return this.ticks === this.height - 1;
+    return this.#ticks === this.#height - 1;
   }
 
   #collidedWithBlock() {
-    return this.cells[this.ticks + 1][1] !== EMPTY_CELL;
+    return this.#cells[this.#ticks + 1][1] !== EMPTY_CELL;
   }
 
   hasFalling() {
-    return !!this.shape;
+    return !!this.#shape;
   }
 
   toString() {
     const board = [];
-    for (let row = 0; row < this.height; row++) {
-      for (let col = 0; col < this.width; col++) {
+    for (let row = 0; row < this.#height; row++) {
+      for (let col = 0; col < this.#width; col++) {
         board.push(this.#shapeAt(row, col));
       }
       board.push("\n");
@@ -56,6 +56,6 @@ export class Board {
   }
 
   #shapeAt(row, col) {
-    return this.hasFalling() && row === this.ticks && col === 1 ? this.shape : this.cells[row][col];
+    return this.hasFalling() && row === this.#ticks && col === 1 ? this.#shape : this.#cells[row][col];
   }
 }
