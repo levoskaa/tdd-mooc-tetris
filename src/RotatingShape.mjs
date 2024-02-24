@@ -15,23 +15,19 @@ export class RotatingShape {
     }
 
     rotateRight() {
-        const rotatedCells = [];
-        for (let row = 0; row < 3; row++) {
-            rotatedCells[row] = [];
-            for (let col = 0; col < 3; col++) {
-                const rotatedCell = this.#rotateCell(row, col, "right");
-                rotatedCells[row][col] = this.#cells[rotatedCell.row][rotatedCell.col];
-            }
-        }
-        return new RotatingShape(rotatedCells);
+        return this.#rotate("right");
     }
 
     rotateLeft() {
+        return this.#rotate("left");
+    }
+
+    #rotate(direction) {
         const rotatedCells = [];
         for (let row = 0; row < 3; row++) {
             rotatedCells[row] = [];
             for (let col = 0; col < 3; col++) {
-                const rotatedCell = this.#rotateCell(row, col, "left");
+                const rotatedCell = this.#rotateCell(row, col, direction);
                 rotatedCells[row][col] = this.#cells[rotatedCell.row][rotatedCell.col];
             }
         }
