@@ -21,6 +21,7 @@ export class Board {
       throw new Error("A shape is already falling");
     }
     this.shape = shape;
+    this.ticks = 0;
   }
 
   tick() {
@@ -32,7 +33,7 @@ export class Board {
   }
 
   #reachedBottom() {
-    return this.ticks === this.height - 1;
+    return this.ticks === this.height - 1 || this.cells[this.ticks + 1][1] !== EMPTY_CELL;
   }
 
   hasFalling() {
