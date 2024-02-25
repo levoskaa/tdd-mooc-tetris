@@ -54,6 +54,10 @@ export class RotatingShape {
     throw new Error(`Invalid direction for rotation: "${direction}"`);
   }
 
+  cellAt(row, col) {
+    return this.#cells[row][col];
+  }
+
   toString() {
     const shape = [];
     for (const row of this.#cells) {

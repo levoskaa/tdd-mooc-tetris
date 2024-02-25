@@ -56,6 +56,18 @@ export class Board {
   }
 
   #shapeAt(row, col) {
-    return this.hasFalling() && row === this.#ticks && col === 1 ? this.#shape : this.#cells[row][col];
+    if (!this.hasFalling()) {
+      return this.#cells[row][col];
+    }
+    const shapeRows = this.#shape.toString().trim().split("\n");
+    const shapeWidth = shapeRows[0].length;
+    const shapeHeight = shapeRows.length;
+    const middle = Math.floor((this.#width - shapeWidth) / 2)
+    const rowInShape = row >= this.#ticks && row < (this.#ticks + shapeHeight);
+    const colInShape = col >= middle && col < (middle + shapeWidth);
+    if (!rowInShape || !colInShape) {
+      return this.#cells[row][col];
+    }
+    return typeof this.#shape === "string" ? this.#shape[0] : this.#shape.cellAt(row - this.#ticks, col - middle);
   }
 }
