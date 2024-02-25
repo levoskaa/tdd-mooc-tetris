@@ -65,8 +65,7 @@ export class Board {
 
   cellAt(row, col) {
     if (this.hasFalling() && this.#isShapeCell(row, col)) {
-    const middle = Math.floor((this.#width - this.#shape.width) / 2);
-    return this.#shape.cellAt(row - this.#ticks, col - middle);
+    return this.#shape.cellAt(row - this.#ticks, col - this.#centerRow());
     }
     return this.#cells[row][col];
   }
