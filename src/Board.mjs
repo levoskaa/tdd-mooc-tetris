@@ -1,3 +1,5 @@
+import { Block } from "./Block.mjs";
+
 const EMPTY_CELL = ".";
 
 export class Board {
@@ -19,6 +21,10 @@ export class Board {
   drop(shape) {
     if (this.hasFalling()) {
       throw new Error("A shape is already falling");
+    }
+    if (typeof shape === "string") {
+      // Create a Block from string shapes to have them provide the same interface as real shapes
+      shape = new Block(shape);
     }
     this.#shape = shape;
     this.#ticks = 0;
@@ -59,14 +65,12 @@ export class Board {
     if (!this.hasFalling()) {
       return this.#cells[row][col];
     }
-    const shapeWidth = typeof this.#shape === "string" ? 1 : this.#shape.width;
-    const shapeHeight = typeof this.#shape === "string" ? 1 : this.#shape.height;
-    const middle = Math.floor((this.#width - shapeWidth) / 2)
-    const rowInShape = row >= this.#ticks && row < (this.#ticks + shapeHeight);
-    const colInShape = col >= middle && col < (middle + shapeWidth);
+    const middle = Math.floor((this.#width - this.#shape.width) / 2);
+    const rowInShape = row >= this.#ticks && row < this.#ticks + this.#shape.height;
+    const colInShape = col >= middle && col < middle + this.#shape.width;
     if (!rowInShape || !colInShape) {
       return this.#cells[row][col];
     }
-    return typeof this.#shape === "string" ? this.#shape[0] : this.#shape.cellAt(row - this.#ticks, col - middle);
+    return this.#shape.cellAt(row - this.#ticks, col - middle);
   }
 }
