@@ -64,15 +64,19 @@ export class Board {
   }
 
   cellAt(row, col) {
-    if (!this.hasFalling()) {
-      return this.#cells[row][col];
+    if (this.hasFalling() && this.#isShapeCell(row, col)) {
+    const middle = Math.floor((this.#width - this.#shape.width) / 2);
+    return this.#shape.cellAt(row - this.#ticks, col - middle);
     }
+    return this.#cells[row][col];
+  }
+
+  #isShapeCell(row, col) {
     const middle = Math.floor((this.#width - this.#shape.width) / 2);
     const rowInShape = row >= this.#ticks && row < this.#ticks + this.#shape.height;
     const colInShape = col >= middle && col < middle + this.#shape.width;
-    if (!rowInShape || !colInShape) {
-      return this.#cells[row][col];
-    }
-    return this.#shape.cellAt(row - this.#ticks, col - middle);
+    return rowInShape && colInShape;
   }
+
+  
 }
