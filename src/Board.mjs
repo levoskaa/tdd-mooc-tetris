@@ -72,11 +72,13 @@ export class Board {
   }
 
   #isShapeCell(row, col) {
-    const middle = Math.floor((this.#width - this.#shape.width) / 2);
+    const center = this.#centerRow();
     const rowInShape = row >= this.#ticks && row < this.#ticks + this.#shape.height;
-    const colInShape = col >= middle && col < middle + this.#shape.width;
+    const colInShape = col >= center && col < center + this.#shape.width;
     return rowInShape && colInShape;
   }
 
-  
+  #centerRow() {
+    return Math.floor((this.#width - this.#shape.width) / 2);
+  }
 }
