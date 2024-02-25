@@ -59,9 +59,8 @@ export class Board {
     if (!this.hasFalling()) {
       return this.#cells[row][col];
     }
-    const shapeRows = this.#shape.toString().trim().split("\n");
-    const shapeWidth = shapeRows[0].length;
-    const shapeHeight = shapeRows.length;
+    const shapeWidth = typeof this.#shape === "string" ? 1 : this.#shape.width;
+    const shapeHeight = typeof this.#shape === "string" ? 1 : this.#shape.height;
     const middle = Math.floor((this.#width - shapeWidth) / 2)
     const rowInShape = row >= this.#ticks && row < (this.#ticks + shapeHeight);
     const colInShape = col >= middle && col < (middle + shapeWidth);
