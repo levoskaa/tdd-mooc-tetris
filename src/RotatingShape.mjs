@@ -1,4 +1,5 @@
 import { Position } from "./Position.mjs";
+import { Shapes } from "./Shapes.mjs";
 
 const RotateDirection = {
   LEFT: "LEFT",
@@ -67,10 +68,6 @@ export class RotatingShape {
   }
 
   toString() {
-    const shape = [];
-    for (const row of this.#cells) {
-      shape.push(...row, "\n");
-    }
-    return shape.join("");
+    return Shapes.toString(this);
   }
 }
