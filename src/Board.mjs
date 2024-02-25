@@ -8,7 +8,8 @@ export class Board {
   #height;
   #shape;
   #cells;
-  #shapeY = 0;
+  #shapeX;
+  #shapeY;
 
   get width() {
     return this.#width;
@@ -36,6 +37,7 @@ export class Board {
       shape = new Block(shape);
     }
     this.#shape = shape;
+    this.#shapeX = Math.floor((this.#width - this.#shape.width) / 2);
     this.#shapeY = 0;
   }
 
@@ -65,19 +67,14 @@ export class Board {
 
   cellAt(row, col) {
     if (this.hasFalling() && this.#isShapeCell(row, col)) {
-      return this.#shape.cellAt(row - this.#shapeY, col - this.#centerRow());
+      return this.#shape.cellAt(row - this.#shapeY, col - this.#shapeX);
     }
     return this.#cells[row][col];
   }
 
   #isShapeCell(row, col) {
-    const center = this.#centerRow();
     const rowInShape = row >= this.#shapeY && row < this.#shapeY + this.#shape.height;
-    const colInShape = col >= center && col < center + this.#shape.width;
+    const colInShape = col >= this.#shapeX && col < this.#shapeX + this.#shape.width;
     return rowInShape && colInShape;
-  }
-
-  #centerRow() {
-    return Math.floor((this.#width - this.#shape.width) / 2);
   }
 }
