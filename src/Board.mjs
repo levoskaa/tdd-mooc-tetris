@@ -8,7 +8,7 @@ export class Board {
   #height;
   #shape;
   #cells;
-  #ticks = 0;
+  #shapeY = 0;
 
   get width() {
     return this.#width;
@@ -36,23 +36,23 @@ export class Board {
       shape = new Block(shape);
     }
     this.#shape = shape;
-    this.#ticks = 0;
+    this.#shapeY = 0;
   }
 
   tick() {
     if (this.#reachedBottom() || this.#collidedWithBlock()) {
-      this.#cells[this.#ticks][1] = this.#shape;
+      this.#cells[this.#shapeY][1] = this.#shape;
       this.#shape = null;
     }
-    this.#ticks++;
+    this.#shapeY++;
   }
 
   #reachedBottom() {
-    return this.#ticks === this.#height - 1;
+    return this.#shapeY === this.#height - 1;
   }
 
   #collidedWithBlock() {
-    return this.#cells[this.#ticks + 1][1] !== EMPTY_CELL;
+    return this.#cells[this.#shapeY + 1][1] !== EMPTY_CELL;
   }
 
   hasFalling() {
@@ -65,14 +65,14 @@ export class Board {
 
   cellAt(row, col) {
     if (this.hasFalling() && this.#isShapeCell(row, col)) {
-    return this.#shape.cellAt(row - this.#ticks, col - this.#centerRow());
+      return this.#shape.cellAt(row - this.#shapeY, col - this.#centerRow());
     }
     return this.#cells[row][col];
   }
 
   #isShapeCell(row, col) {
     const center = this.#centerRow();
-    const rowInShape = row >= this.#ticks && row < this.#ticks + this.#shape.height;
+    const rowInShape = row >= this.#shapeY && row < this.#shapeY + this.#shape.height;
     const colInShape = col >= center && col < center + this.#shape.width;
     return rowInShape && colInShape;
   }
