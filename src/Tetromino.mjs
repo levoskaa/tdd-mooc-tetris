@@ -2,19 +2,24 @@ import { RotatingShape } from "./RotatingShape.mjs";
 
 export class Tetromino {
   #shape;
+  #orientations;
 
-  constructor(shape) {
+  constructor(shape, orientations) {
     this.#shape = shape;
+    this.#orientations = orientations;
   }
 
   static get T_SHAPE() {
-    return new Tetromino(
-      RotatingShape.fromString(
-        `.T.
-         TTT
-         ...`
-      )
+    const shape = RotatingShape.fromString(
+      `.T.
+       TTT
+       ...`
     );
+    const orientations = [shape];
+    for (let i = 1; i < 4; i++) {
+      orientations.push(orientations[i - 1].rotateRight());
+    }
+    return new Tetromino(shape, orientations);
   }
 
   static get I_SHAPE() {
