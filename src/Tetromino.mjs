@@ -3,10 +3,12 @@ import { RotatingShape } from "./RotatingShape.mjs";
 export class Tetromino {
   #shape;
   #orientations;
+  #current;
 
-  constructor(shape, orientations) {
+  constructor(shape, orientations, current) {
     this.#shape = shape;
     this.#orientations = orientations;
+    this.#current = current;
   }
 
   static get T_SHAPE() {
@@ -19,7 +21,7 @@ export class Tetromino {
     for (let i = 1; i < 4; i++) {
       orientations.push(orientations[i - 1].rotateRight());
     }
-    return new Tetromino(shape, orientations);
+    return new Tetromino(shape, orientations, 0);
   }
 
   static get I_SHAPE() {
@@ -34,7 +36,7 @@ export class Tetromino {
     for (let i = 1; i < 2; i++) {
       orientations.push(orientations[i - 1].rotateRight());
     }
-    return new Tetromino(shape, orientations);
+    return new Tetromino(shape, orientations, 0);
   }
 
   rotateRight() {
