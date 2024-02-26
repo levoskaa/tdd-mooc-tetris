@@ -8,10 +8,12 @@ export class Tetromino {
   }
 
   static get T_SHAPE() {
-    return RotatingShape.fromString(
-      `.T.
-       TTT
-       ...`
+    return new Tetromino(
+      RotatingShape.fromString(
+        `.T.
+         TTT
+         ...`
+      )
     );
   }
 
@@ -23,5 +25,17 @@ export class Tetromino {
        .....
        .....`
     );
+  }
+
+  rotateRight() {
+    return this.#shape.rotateRight();
+  }
+
+  rotateLeft() {
+    return this.#shape.rotateLeft();
+  }
+
+  toString() {
+    return this.#shape.toString();
   }
 }
