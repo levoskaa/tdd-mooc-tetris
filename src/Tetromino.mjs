@@ -23,15 +23,18 @@ export class Tetromino {
   }
 
   static get I_SHAPE() {
-    return new Tetromino(
-      RotatingShape.fromString(
-        `.....
-         .....
-         IIII.
-         .....
-         .....`
-      )
+    const shape = RotatingShape.fromString(
+      `.....
+       .....
+       IIII.
+       .....
+       .....`
     );
+    const orientations = [shape];
+    for (let i = 1; i < 2; i++) {
+      orientations.push(orientations[i - 1].rotateRight());
+    }
+    return new Tetromino(shape, orientations);
   }
 
   rotateRight() {
