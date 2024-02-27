@@ -42,7 +42,8 @@ export class Board {
   }
 
   #collidedWithBlock() {
-    return this.#cells[this.#shapeY + this.#shape.height][1] !== EMPTY_CELL;
+    const centerX = Math.floor(this.#width / 2);
+    return this.#cells[this.#shapeY + this.#shape.height][centerX] !== EMPTY_CELL;
   }
 
   hasFalling() {
