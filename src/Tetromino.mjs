@@ -37,6 +37,16 @@ export class Tetromino {
     return new Tetromino(orientations, 0);
   }
 
+  static get O_SHAPE() {
+    const shape = RotatingShape.fromString(
+      `.OO
+       .OO
+       ...`
+    );
+    const orientations = [shape];
+    return new Tetromino(orientations, 0);
+  }
+
   rotateRight() {
     return this.#rotate((index) => index + 1, 0);
   }
