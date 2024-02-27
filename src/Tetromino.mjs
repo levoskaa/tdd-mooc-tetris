@@ -38,17 +38,17 @@ export class Tetromino {
   }
 
   rotateRight() {
-    let newIndex = this.#index + 1;
-    if (!this.#isIndexValid(newIndex)) {
-      newIndex = 0;
-    }
-    return new Tetromino(this.#orientations, newIndex);
+    return this.#rotate((index) => index + 1, 0);
   }
 
   rotateLeft() {
-    let newIndex = this.#index - 1;
+    return this.#rotate((index) => index - 1, this.#orientations.length - 1);
+  }
+
+  #rotate(indexMapper, fallbackIndex) {
+    let newIndex = indexMapper(this.#index);
     if (!this.#isIndexValid(newIndex)) {
-      newIndex = this.#orientations.length - 1;
+      newIndex = fallbackIndex;
     }
     return new Tetromino(this.#orientations, newIndex);
   }
