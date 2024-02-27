@@ -38,7 +38,7 @@ export class Board {
   }
 
   #reachedBottom() {
-    return this.#ticks === this.#height - 1;
+    return this.#ticks === this.#height - this.#shape.height;
   }
 
   #collidedWithBlock() {
