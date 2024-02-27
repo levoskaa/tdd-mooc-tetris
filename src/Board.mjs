@@ -31,7 +31,8 @@ export class Board {
 
   tick() {
     if (this.#reachedBottom() || this.#collidedWithBlock()) {
-      this.#cells[this.#shapeY][1] = this.#shape;
+      const centerX = Math.floor(this.#width / 2);
+      this.#cells[this.#shapeY][centerX] = this.#shape.toString();
       this.#shape = null;
     }
     this.#shapeY++;
