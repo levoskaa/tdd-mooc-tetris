@@ -7,7 +7,7 @@ export class Board {
   #height;
   #shape;
   #cells;
-  #ticks = 0;
+  #shapeY = 0;
 
   constructor(width, height) {
     this.#width = width;
@@ -26,23 +26,23 @@ export class Board {
       shape = new Block(shape);
     }
     this.#shape = shape;
-    this.#ticks = 0;
+    this.#shapeY = 0;
   }
 
   tick() {
     if (this.#reachedBottom() || this.#collidedWithBlock()) {
-      this.#cells[this.#ticks][1] = this.#shape;
+      this.#cells[this.#shapeY][1] = this.#shape;
       this.#shape = null;
     }
-    this.#ticks++;
+    this.#shapeY++;
   }
 
   #reachedBottom() {
-    return this.#ticks === this.#height - this.#shape.height;
+    return this.#shapeY === this.#height - this.#shape.height;
   }
 
   #collidedWithBlock() {
-    return this.#cells[this.#ticks + 1][1] !== EMPTY_CELL;
+    return this.#cells[this.#shapeY + 1][1] !== EMPTY_CELL;
   }
 
   hasFalling() {
@@ -61,6 +61,6 @@ export class Board {
   }
 
   #shapeAt(row, col) {
-    return this.hasFalling() && row === this.#ticks && col === 1 ? this.#shape : this.#cells[row][col];
+    return this.hasFalling() && row === this.#shapeY && col === 1 ? this.#shape : this.#cells[row][col];
   }
 }
