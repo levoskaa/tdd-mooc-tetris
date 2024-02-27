@@ -1,3 +1,5 @@
+import { Block } from "./Block.mjs";
+
 const EMPTY_CELL = ".";
 
 export class Board {
@@ -19,6 +21,9 @@ export class Board {
   drop(shape) {
     if (this.hasFalling()) {
       throw new Error("A shape is already falling");
+    }
+    if (typeof shape === "string") {
+      shape = new Block(shape);
     }
     this.#shape = shape;
     this.#ticks = 0;
