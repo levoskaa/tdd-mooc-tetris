@@ -43,8 +43,12 @@ export class Tetromino {
        .OO
        ...`
     );
+    return this.#fromShape(shape, 1);
+  }
+
+  static #fromShape(shape, orientationCount) {
     const orientations = [shape];
-    for (let i = 1; i < 1; i++) {
+    for (let i = 1; i < orientationCount; i++) {
       orientations.push(orientations[i - 1].rotateRight());
     }
     return new Tetromino(orientations, 0);
