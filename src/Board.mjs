@@ -42,7 +42,7 @@ export class Board {
   }
 
   #collidedWithBlock() {
-    return this.#cells[this.#shapeY + 1][1] !== EMPTY_CELL;
+    return this.#cells[this.#shapeY + this.#shape.height][1] !== EMPTY_CELL;
   }
 
   hasFalling() {
