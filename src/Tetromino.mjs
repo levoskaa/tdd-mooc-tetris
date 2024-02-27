@@ -48,7 +48,11 @@ export class Tetromino {
   }
 
   rotateLeft() {
-    return this.#shape.rotateLeft();
+    let newIndex = this.#current - 1;
+    if (newIndex === -1) {
+      newIndex = this.#orientations.length - 1;
+    }
+    return new Tetromino(this.#orientations[newIndex], this.#orientations, newIndex);
   }
 
   toString() {
