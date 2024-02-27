@@ -9,6 +9,10 @@ export class Board {
   #cells;
   #shapeY = 0;
 
+  get #centerX() {
+    return Math.floor(this.#width / 2);
+  }
+
   constructor(width, height) {
     this.#width = width;
     this.#height = height;
@@ -31,8 +35,7 @@ export class Board {
 
   tick() {
     if (this.#reachedBottom() || this.#collidedWithBlock()) {
-      const centerX = Math.floor(this.#width / 2);
-      this.#cells[this.#shapeY][centerX] = this.#shape.toString();
+      this.#cells[this.#shapeY][this.#centerX] = this.#shape.toString();
       this.#shape = null;
     }
     this.#shapeY++;
@@ -43,8 +46,7 @@ export class Board {
   }
 
   #collidedWithBlock() {
-    const centerX = Math.floor(this.#width / 2);
-    return this.#cells[this.#shapeY + this.#shape.height][centerX] !== EMPTY_CELL;
+    return this.#cells[this.#shapeY + this.#shape.height][this.#centerX] !== EMPTY_CELL;
   }
 
   hasFalling() {
@@ -63,7 +65,6 @@ export class Board {
   }
 
   #shapeAt(row, col) {
-    const centerX = Math.floor(this.#width / 2);
-    return this.hasFalling() && row === this.#shapeY && col === centerX ? this.#shape.toString() : this.#cells[row][col];
+    return this.hasFalling() && row === this.#shapeY && col === this.#centerX ? this.#shape.toString() : this.#cells[row][col];
   }
 }
