@@ -30,11 +30,7 @@ export class Tetromino {
        .....
        .....`
     );
-    const orientations = [shape];
-    for (let i = 1; i < 2; i++) {
-      orientations.push(orientations[i - 1].rotateRight());
-    }
-    return new Tetromino(orientations, 0);
+    return this.#fromShape(shape, 2);
   }
 
   static get O_SHAPE() {
