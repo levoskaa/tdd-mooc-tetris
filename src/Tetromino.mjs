@@ -44,6 +44,9 @@ export class Tetromino {
        ...`
     );
     const orientations = [shape];
+    for (let i = 1; i < 1; i++) {
+      orientations.push(orientations[i - 1].rotateRight());
+    }
     return new Tetromino(orientations, 0);
   }
 
