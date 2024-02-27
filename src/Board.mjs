@@ -63,6 +63,7 @@ export class Board {
   }
 
   #shapeAt(row, col) {
-    return this.hasFalling() && row === this.#shapeY && col === 1 ? this.#shape : this.#cells[row][col];
+    const centerX = Math.floor(this.#width / 2);
+    return this.hasFalling() && row === this.#shapeY && col === centerX ? this.#shape.toString() : this.#cells[row][col];
   }
 }
