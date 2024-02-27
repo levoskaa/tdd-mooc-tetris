@@ -1,12 +1,10 @@
 import { RotatingShape } from "./RotatingShape.mjs";
 
 export class Tetromino {
-  #shape;
   #orientations;
   #current;
 
-  constructor(shape, orientations, current) {
-    this.#shape = shape;
+  constructor(orientations, current) {
     this.#orientations = orientations;
     this.#current = current;
   }
@@ -21,7 +19,7 @@ export class Tetromino {
     for (let i = 1; i < 4; i++) {
       orientations.push(orientations[i - 1].rotateRight());
     }
-    return new Tetromino(shape, orientations, 0);
+    return new Tetromino(orientations, 0);
   }
 
   static get I_SHAPE() {
@@ -36,7 +34,7 @@ export class Tetromino {
     for (let i = 1; i < 2; i++) {
       orientations.push(orientations[i - 1].rotateRight());
     }
-    return new Tetromino(shape, orientations, 0);
+    return new Tetromino(orientations, 0);
   }
 
   rotateRight() {
@@ -44,7 +42,7 @@ export class Tetromino {
     if (newIndex === this.#orientations.length) {
       newIndex = 0;
     }
-    return new Tetromino(this.#orientations[newIndex], this.#orientations, newIndex);
+    return new Tetromino(this.#orientations, newIndex);
   }
 
   rotateLeft() {
@@ -52,7 +50,7 @@ export class Tetromino {
     if (newIndex === -1) {
       newIndex = this.#orientations.length - 1;
     }
-    return new Tetromino(this.#orientations[newIndex], this.#orientations, newIndex);
+    return new Tetromino(this.#orientations, newIndex);
   }
 
   toString() {
