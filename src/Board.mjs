@@ -10,10 +10,6 @@ export class Board {
   #shapeX;
   #shapeY;
 
-  get #centerX() {
-    return Math.floor(this.#width / 2);
-  }
-
   constructor(width, height) {
     this.#width = width;
     this.#height = height;
