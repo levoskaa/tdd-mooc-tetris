@@ -74,6 +74,10 @@ export class Tetromino {
     return index >= 0 && index < this.#orientations.length;
   }
 
+  cellAt(row, col) {
+    return this.#orientations[this.#index].cellAt(row, col);
+  }
+
   toString() {
     return this.#orientations[this.#index].toString();
   }

@@ -13,6 +13,12 @@ export class Block {
     this.#cell = cell;
   }
 
+  cellAt(row, col) {
+    if (row === 0 && col === 0) {
+      return this.#cell;
+    }
+  }
+
   toString() {
     return this.#cell;
   }
