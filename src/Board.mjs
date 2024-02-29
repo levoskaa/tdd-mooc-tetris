@@ -66,8 +66,11 @@ export class Board {
     if (!this.hasFalling()) {
       return this.#cells[row][col];
     }
-    const rowInShape = row >= this.#shapeY && row < this.#shapeY + this.#shape.height;
     const colInShape = col >= this.#shapeX && col < this.#shapeX + this.#shape.width;
-    return rowInShape && colInShape ? this.#shape.cellAt(row - this.#shapeY, col - this.#shapeX) : this.#cells[row][col];
+    return this.#isRowInShape(row) && colInShape ? this.#shape.cellAt(row - this.#shapeY, col - this.#shapeX) : this.#cells[row][col];
+  }
+
+  #isRowInShape(row) {
+    return row >= this.#shapeY && row < this.#shapeY + this.#shape.height;
   }
 }
