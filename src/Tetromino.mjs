@@ -4,6 +4,14 @@ export class Tetromino {
   #orientations;
   #index;
 
+  get width() {
+    return this.#orientations[this.#index].width;
+  }
+
+  get height() {
+    return this.#orientations[this.#index].height;
+  }
+
   constructor(orientations, index) {
     this.#orientations = orientations;
     this.#index = index;

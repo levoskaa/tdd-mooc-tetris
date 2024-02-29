@@ -10,6 +10,14 @@ export class RotatingShape {
   #width;
   #height;
 
+  get width() {
+    return this.#width;
+  }
+
+  get height() {
+    return this.#height;
+  }
+
   constructor(cells) {
     this.#cells = cells;
     this.#width = cells[0].length;
