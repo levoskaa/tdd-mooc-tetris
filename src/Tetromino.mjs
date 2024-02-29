@@ -79,7 +79,7 @@ export class Tetromino {
   }
 
   cellAt(row, col) {
-    return this.#orientations[this.#index].cellAt(row, col);
+    return this.#shape.cellAt(row, col);
   }
 
   toString() {
