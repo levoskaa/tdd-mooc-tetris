@@ -1,6 +1,10 @@
 export class Block {
   #cell;
 
+  get width() {
+    return 1;
+  }
+
   get height() {
     return 1;
   }

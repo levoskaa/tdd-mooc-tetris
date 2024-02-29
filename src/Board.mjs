@@ -37,7 +37,7 @@ export class Board {
 
   tick() {
     if (this.#reachedBottom() || this.#collidedWithBlock()) {
-      this.#cells[this.#shapeY][this.#centerX] = this.#shape.toString();
+      this.#cells[this.#shapeY][this.#shapeX] = this.#shape.toString();
       this.#shape = null;
     }
     this.#shapeY++;
