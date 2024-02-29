@@ -66,11 +66,14 @@ export class Board {
     if (!this.hasFalling()) {
       return this.#cells[row][col];
     }
-    const colInShape = col >= this.#shapeX && col < this.#shapeX + this.#shape.width;
-    return this.#isRowInShape(row) && colInShape ? this.#shape.cellAt(row - this.#shapeY, col - this.#shapeX) : this.#cells[row][col];
+    return this.#isRowInShape(row) && this.#isColInShape(col) ? this.#shape.cellAt(row - this.#shapeY, col - this.#shapeX) : this.#cells[row][col];
   }
 
   #isRowInShape(row) {
     return row >= this.#shapeY && row < this.#shapeY + this.#shape.height;
+  }
+
+  #isColInShape(col) {
+    return col >= this.#shapeX && col < this.#shapeX + this.#shape.width;
   }
 }
