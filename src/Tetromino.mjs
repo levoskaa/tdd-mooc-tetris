@@ -5,11 +5,15 @@ export class Tetromino {
   #index;
 
   get width() {
-    return this.#orientations[this.#index].width;
+    return this.#shape.width;
   }
 
   get height() {
     return this.#orientations[this.#index].height;
+  }
+
+  get #shape() {
+    return this.#orientations[this.#index];
   }
 
   constructor(orientations, index) {
