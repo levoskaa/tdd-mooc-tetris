@@ -48,7 +48,7 @@ export class Board {
   }
 
   #collidedWithBlock() {
-    return this.#cells[this.#shapeY + this.#shape.height][this.#centerX] !== EMPTY_CELL;
+    return this.#cells[this.#shapeY + this.#shape.height][this.#shapeX] !== EMPTY_CELL;
   }
 
   hasFalling() {
@@ -67,6 +67,6 @@ export class Board {
   }
 
   #shapeAt(row, col) {
-    return this.hasFalling() && row === this.#shapeY && col === this.#centerX ? this.#shape.toString() : this.#cells[row][col];
+    return this.hasFalling() && row === this.#shapeY && col === this.#shapeX ? this.#shape.toString() : this.#cells[row][col];
   }
 }
