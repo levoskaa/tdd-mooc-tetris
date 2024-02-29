@@ -7,7 +7,8 @@ export class Board {
   #height;
   #shape;
   #cells;
-  #shapeY = 0;
+  #shapeX;
+  #shapeY;
 
   get #centerX() {
     return Math.floor(this.#width / 2);
@@ -30,6 +31,7 @@ export class Board {
       shape = new Block(shape);
     }
     this.#shape = shape;
+    this.#shapeX = Math.floor((this.#width - this.#shape.width) / 2);
     this.#shapeY = 0;
   }
 
