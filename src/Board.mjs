@@ -63,6 +63,11 @@ export class Board {
   }
 
   #shapeAt(row, col) {
-    return this.hasFalling() && row === this.#shapeY && col === this.#shapeX ? this.#shape.toString() : this.#cells[row][col];
+    if (!this.hasFalling()) {
+      return this.#cells[row][col];
+    }
+    const rowInShape = row >= this.#shapeY && row < this.#shapeY + this.#shape.height;
+    const colInShape = col >= this.#shapeX && col < this.#shapeX + this.#shape.width;
+    return rowInShape && colInShape ? this.#shape.cellAt(row - this.#shapeY, col - this.#shapeX) : this.#cells[row][col];
   }
 }
