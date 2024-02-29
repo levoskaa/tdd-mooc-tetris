@@ -9,7 +9,7 @@ export class Tetromino {
   }
 
   get height() {
-    return this.#orientations[this.#index].height;
+    return this.#shape.height;
   }
 
   get #shape() {
