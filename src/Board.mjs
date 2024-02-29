@@ -66,7 +66,11 @@ export class Board {
     if (!this.hasFalling()) {
       return this.#cells[row][col];
     }
-    return this.#isRowInShape(row) && this.#isColInShape(col) ? this.#shape.cellAt(row - this.#shapeY, col - this.#shapeX) : this.#cells[row][col];
+    return this.#isCellInShape(row, col) ? this.#shape.cellAt(row - this.#shapeY, col - this.#shapeX) : this.#cells[row][col];
+  }
+
+  #isCellInShape(row, col) {
+    return this.#isRowInShape(row) && this.#isColInShape(col);
   }
 
   #isRowInShape(row) {
