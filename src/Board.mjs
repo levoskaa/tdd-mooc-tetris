@@ -35,7 +35,7 @@ export class Board {
     if (!this.hasFalling()) {
       return;
     }
-    if (this.#reachedBottom() || this.#collidedWithBlock()) {
+    if (this.#reachedBottom2() || this.#collidedWithBlock2()) {
       this.#fixInPlace();
     }
     this.#shapeY++;
@@ -80,6 +80,9 @@ export class Board {
   #fixInPlace() {
     for (let row = 0; row < this.#shape.height; row++) {
       for (let col = 0; col < this.#shape.width; col++) {
+        if (this.#shapeY + row >= this.#height) {
+          break;
+        }
         this.#cells[this.#shapeY + row][this.#shapeX + col] = this.#shape.cellAt(row, col);
       }
     }
