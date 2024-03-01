@@ -32,6 +32,9 @@ export class Board {
   }
 
   tick() {
+    if (!this.hasFalling()) {
+      return;
+    }
     if (this.#reachedBottom() || this.#collidedWithBlock()) {
       this.#fixInPlace();
     }
@@ -40,6 +43,20 @@ export class Board {
 
   #reachedBottom() {
     return this.#shapeY === this.#height - this.#shape.height;
+  }
+
+  #reachedBottom2() {
+    for (let row = this.#shape.height - 1; row >= 0; row--) {
+      for (let col = 0; col < this.#shape.width; col++) {
+        if (this.#shape.cellAt(row, col) === EMPTY_CELL) {
+          continue;
+        }
+        if (this.#shapeY + row === this.#height - 1) {
+          return true;
+        }
+      }
+    }
+    return false;
   }
 
   #collidedWithBlock() {
