@@ -35,17 +35,13 @@ export class Board {
     if (!this.hasFalling()) {
       return;
     }
-    if (this.#reachedBottom2() || this.#collidedWithBlock2()) {
+    if (this.#reachedBottom() || this.#collidedWithBlock()) {
       this.#fixInPlace();
     }
     this.#shapeY++;
   }
 
   #reachedBottom() {
-    return this.#shapeY === this.#height - this.#shape.height;
-  }
-
-  #reachedBottom2() {
     for (let row = this.#shape.height - 1; row >= 0; row--) {
       for (let col = 0; col < this.#shape.width; col++) {
         if (this.#shape.cellAt(row, col) === EMPTY_CELL) {
@@ -59,7 +55,7 @@ export class Board {
     return false;
   }
 
-  #collidedWithBlock2() {
+  #collidedWithBlock() {
     for (let row = this.#shape.height - 1; row >= 0; row--) {
       for (let col = 0; col < this.#shape.width; col++) {
         if (this.#shape.cellAt(row, col) === EMPTY_CELL) {
@@ -71,10 +67,6 @@ export class Board {
       }
     }
     return false;
-  }
-
-  #collidedWithBlock() {
-    return this.#cells[this.#shapeY + this.#shape.height][this.#shapeX] !== EMPTY_CELL;
   }
 
   #fixInPlace() {
