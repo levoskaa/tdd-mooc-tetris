@@ -33,8 +33,7 @@ export class Board {
 
   tick() {
     if (this.#reachedBottom() || this.#collidedWithBlock()) {
-      this.#cells[this.#shapeY][this.#shapeX] = this.#shape.toString();
-      this.#shape = null;
+      this.#fixInPlace();
     }
     this.#shapeY++;
   }
@@ -45,6 +44,15 @@ export class Board {
 
   #collidedWithBlock() {
     return this.#cells[this.#shapeY + this.#shape.height][this.#shapeX] !== EMPTY_CELL;
+  }
+
+  #fixInPlace() {
+    for (let row = 0; row < this.#shape.height; row++) {
+      for (let col = 0; col < this.#shape.width; col++) {
+        this.#cells[this.#shapeY + row][this.#shapeX + col] = this.#shape.cellAt(row, col);
+      }
+    }
+    this.#shape = null;
   }
 
   hasFalling() {
