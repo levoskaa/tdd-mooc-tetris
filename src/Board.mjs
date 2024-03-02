@@ -1,4 +1,5 @@
 import { Block } from "./Block.mjs";
+import { Shapes } from "./Shapes.mjs";
 
 export const EMPTY_CELL = ".";
 
@@ -9,6 +10,14 @@ export class Board {
   #cells;
   #shapeX;
   #shapeY;
+
+  get width() {
+    return this.#width;
+  }
+
+  get height() {
+    return this.#height;
+  }
 
   constructor(width, height) {
     this.#width = width;
@@ -68,17 +77,10 @@ export class Board {
   }
 
   toString() {
-    const board = [];
-    for (let row = 0; row < this.#height; row++) {
-      for (let col = 0; col < this.#width; col++) {
-        board.push(this.#cellAt(row, col));
-      }
-      board.push("\n");
-    }
-    return board.join("");
+    return Shapes.toString(this);
   }
 
-  #cellAt(row, col) {
+  cellAt(row, col) {
     if (this.hasFalling() && this.#isCellInShape(row, col)) {
       return this.#shape.cellAt(row - this.#shapeY, col - this.#shapeX);
     }
