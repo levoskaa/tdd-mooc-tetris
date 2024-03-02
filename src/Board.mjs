@@ -67,8 +67,9 @@ export class Board {
         break;
       }
       for (let col = 0; col < this.#shape.width; col++) {
-        if (this.#shape.cellAt(row, col) !== EMPTY_CELL) {
-          this.#cells[this.#shapeY + row][this.#shapeX + col] = this.#shape.cellAt(row, col);
+        const cell = this.#shape.cellAt(row, col);
+        if (cell !== EMPTY_CELL) {
+          this.#cells[this.#shapeY + row][this.#shapeX + col] = cell;
         }
       }
     }
