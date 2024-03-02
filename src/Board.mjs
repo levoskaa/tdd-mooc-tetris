@@ -46,18 +46,9 @@ export class Board {
   }
 
   #collidedWithBlock() {
-    return this.#shape.anyFilledCell((row, col) => this.#cells[this.#shapeY + row + 1][this.#shapeX + col] !== EMPTY_CELL)
-    for (let row = this.#shape.height - 1; row >= 0; row--) {
-      for (let col = 0; col < this.#shape.width; col++) {
-        if (this.#shape.cellAt(row, col) === EMPTY_CELL) {
-          continue;
-        }
-        if (this.#cells[this.#shapeY + row + 1][this.#shapeX + col] !== EMPTY_CELL) {
-          return true;
-        }
-      }
-    }
-    return false;
+    return this.#shape.anyFilledCell(
+      (row, col) => this.#cells[this.#shapeY + row + 1][this.#shapeX + col] !== EMPTY_CELL
+    );
   }
 
   #fixInPlace() {
