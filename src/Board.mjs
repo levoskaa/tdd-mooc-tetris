@@ -46,6 +46,7 @@ export class Board {
     }
     if (this.#reachedBottom() || this.#collidedWithBlock()) {
       this.#fixInPlace();
+      this.#shape = null;
     }
     this.#shapeY++;
   }
@@ -71,7 +72,6 @@ export class Board {
         }
       }
     }
-    this.#shape = null;
   }
 
   hasFalling() {
