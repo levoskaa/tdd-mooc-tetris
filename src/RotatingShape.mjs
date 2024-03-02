@@ -1,5 +1,5 @@
-import { Board } from "./Board.mjs";
 import { Position } from "./Position.mjs";
+import { Shapes } from "./Shapes.mjs";
 
 const RotateDirection = {
   LEFT: "LEFT",
@@ -68,13 +68,6 @@ export class RotatingShape {
   }
 
   toString() {
-    const shape = [];
-    for (let row = 0; row < this.#height; row++) {
-      for (let col = 0; col < this.#width; col++) {
-        shape.push(this.cellAt(row, col));
-      }
-      shape.push("\n");
-    }
-    return shape.join("");
+    return Shapes.toString(this);
   }
 }
