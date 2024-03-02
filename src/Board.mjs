@@ -71,14 +71,14 @@ export class Board {
     const board = [];
     for (let row = 0; row < this.#height; row++) {
       for (let col = 0; col < this.#width; col++) {
-        board.push(this.#shapeAt(row, col));
+        board.push(this.#cellAt(row, col));
       }
       board.push("\n");
     }
     return board.join("");
   }
 
-  #shapeAt(row, col) {
+  #cellAt(row, col) {
     if (this.hasFalling() && this.#isCellInShape(row, col)) {
       return this.#shape.cellAt(row - this.#shapeY, col - this.#shapeX);
     }
