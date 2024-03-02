@@ -86,10 +86,7 @@ export class Tetromino {
   anyFilledCell(predicate) {
     for (let row = this.height - 1; row >= 0; row--) {
       for (let col = 0; col < this.width; col++) {
-        if (this.cellAt(row, col) === EMPTY_CELL) {
-          continue;
-        }
-        if (predicate(row, col)) {
+        if (this.cellAt(row, col) !== EMPTY_CELL && predicate(row, col)) {
           return true;
         }
       }
