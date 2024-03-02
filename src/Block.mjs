@@ -19,6 +19,10 @@ export class Block {
     }
   }
 
+  anyFilledCell(predicate) {
+    return predicate(0, 0);
+  }
+
   toString() {
     return this.#cell;
   }

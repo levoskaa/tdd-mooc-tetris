@@ -1,6 +1,6 @@
 import { Block } from "./Block.mjs";
 
-const EMPTY_CELL = ".";
+export const EMPTY_CELL = ".";
 
 export class Board {
   #width;
@@ -42,6 +42,7 @@ export class Board {
   }
 
   #reachedBottom() {
+    return this.#shape.anyFilledCell((row, _) => this.#shapeY + row === this.#height - 1);
     for (let row = this.#shape.height - 1; row >= 0; row--) {
       for (let col = 0; col < this.#shape.width; col++) {
         if (this.#shape.cellAt(row, col) === EMPTY_CELL) {

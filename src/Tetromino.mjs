@@ -1,3 +1,4 @@
+import { EMPTY_CELL } from "./Board.mjs";
 import { RotatingShape } from "./RotatingShape.mjs";
 
 export class Tetromino {
@@ -80,6 +81,20 @@ export class Tetromino {
 
   cellAt(row, col) {
     return this.#shape.cellAt(row, col);
+  }
+
+  anyFilledCell(predicate) {
+    for (let row = this.height - 1; row >= 0; row--) {
+      for (let col = 0; col < this.width; col++) {
+        if (this.cellAt(row, col) === EMPTY_CELL) {
+          continue;
+        }
+        if (predicate(row, col)) {
+          return true;
+        }
+      }
+    }
+    return false;
   }
 
   toString() {
