@@ -1,3 +1,4 @@
+import { Board } from "./Board.mjs";
 import { Position } from "./Position.mjs";
 
 const RotateDirection = {
@@ -68,8 +69,11 @@ export class RotatingShape {
 
   toString() {
     const shape = [];
-    for (const row of this.#cells) {
-      shape.push(...row, "\n");
+    for (let row = 0; row < this.#height; row++) {
+      for (let col = 0; col < this.#width; col++) {
+        shape.push(this.cellAt(row, col));
+      }
+      shape.push("\n");
     }
     return shape.join("");
   }
