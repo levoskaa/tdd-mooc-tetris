@@ -39,6 +39,10 @@ export class Block {
     this.#movingShape = this.#movingShape.moveLeft();
   }
 
+  moveRight() {
+    this.#movingShape = this.#movingShape.moveRight();
+  }
+
   toString() {
     return this.#cell;
   }
