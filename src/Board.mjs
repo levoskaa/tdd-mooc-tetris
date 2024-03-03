@@ -100,7 +100,7 @@ export class Board {
   }
 
   #isColInShape(col) {
-    return col >= this.#shapeX && col < this.#shapeX + this.#shape.width;
+    return col >= this.#shape.left && col < this.#shape.left + this.#shape.width;
   }
 
   moveLeft() {
