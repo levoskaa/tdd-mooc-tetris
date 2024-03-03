@@ -22,4 +22,8 @@ export class MovingShape {
   moveRight() {
     return new MovingShape(this.#left + 1, this.#top);
   }
+
+  moveDown() {
+    return new MovingShape(this.#left, this.#top + 1);
+  }
 }
