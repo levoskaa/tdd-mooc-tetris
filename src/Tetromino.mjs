@@ -15,6 +15,10 @@ export class Tetromino {
     return this.#shape.height;
   }
 
+  get left() {
+    return this.#movingShape.left;
+  }
+
   get #shape() {
     return this.#orientations[this.#index];
   }

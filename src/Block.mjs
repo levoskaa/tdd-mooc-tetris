@@ -12,6 +12,10 @@ export class Block {
     return 1;
   }
 
+  get left() {
+    return this.#movingShape.left;
+  }
+
   constructor(cell, row, col) {
     this.#cell = cell;
     this.#movingShape = new MovingShape(row, col);
