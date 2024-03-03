@@ -1,9 +1,11 @@
 import { EMPTY_CELL } from "./Board.mjs";
+import { MovingShape } from "./MovingShape.mjs";
 import { RotatingShape } from "./RotatingShape.mjs";
 
 export class Tetromino {
   #orientations;
   #index;
+  #movingShape;
 
   get width() {
     return this.#shape.width;
@@ -17,9 +19,10 @@ export class Tetromino {
     return this.#orientations[this.#index];
   }
 
-  constructor(orientations, index) {
+  constructor(orientations, index, movingShape) {
     this.#orientations = orientations;
     this.#index = index;
+    this.#movingShape = movingShape;
   }
 
   static get T_SHAPE() {
