@@ -64,7 +64,7 @@ export class Board {
 
   #fixInPlace() {
     for (let row = 0; row < this.#shape.height; row++) {
-      if (this.#shapeY + row === this.#height) {
+      if (this.#shape.top + row === this.#height) {
         break;
       }
       for (let col = 0; col < this.#shape.width; col++) {
