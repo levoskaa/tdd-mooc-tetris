@@ -59,7 +59,7 @@ export class Tetromino {
     for (let i = 1; i < orientationCount; i++) {
       orientations.push(orientations[i - 1].rotateRight());
     }
-    return new Tetromino(orientations, 0);
+    return new Tetromino(orientations, 0, new MovingShape());
   }
 
   rotateRight() {
@@ -95,6 +95,10 @@ export class Tetromino {
       }
     }
     return false;
+  }
+
+  moveTo(row, col) {
+    this.#movingShape = this.#movingShape.moveTo(row, col);
   }
 
   toString() {

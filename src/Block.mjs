@@ -27,6 +27,10 @@ export class Block {
     return predicate(0, 0);
   }
 
+  moveTo(row, col) {
+    this.#movingShape = this.#movingShape.moveTo(row, col);
+  }
+
   toString() {
     return this.#cell;
   }
