@@ -48,7 +48,6 @@ export class Board {
       this.#shape = null;
       return;
     }
-    this.#shapeY++;
     this.#shape.moveDown();
   }
 
