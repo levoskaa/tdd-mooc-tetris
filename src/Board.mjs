@@ -58,7 +58,7 @@ export class Board {
 
   #collidedWithBlock() {
     return this.#shape.anyFilledCell(
-      (row, col) => this.#cells[this.#shapeY + row + 1][this.#shape.left + col] !== EMPTY_CELL
+      (row, col) => this.#cells[this.#shape.top + row + 1][this.#shape.left + col] !== EMPTY_CELL
     );
   }
 
