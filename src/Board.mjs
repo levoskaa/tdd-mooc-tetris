@@ -109,4 +109,8 @@ export class Board {
   moveRight() {
     this.#shapeX++;
   }
+
+  moveDown() {
+    this.#shapeY++;
+  }
 }
