@@ -111,5 +111,6 @@ export class Board {
 
   moveDown() {
     this.#shapeY++;
+    this.#shape.moveDown();
   }
 }
