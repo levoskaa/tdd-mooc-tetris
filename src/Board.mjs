@@ -104,7 +104,6 @@ export class Board {
   }
 
   moveLeft() {
-    this.#shapeX--;
     this.#shape.moveLeft();
   }
 
