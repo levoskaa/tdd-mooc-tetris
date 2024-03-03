@@ -18,4 +18,8 @@ export class MovingShape {
   moveLeft() {
     return new MovingShape(this.#left - 1, this.#top);
   }
+
+  moveRight() {
+    return new MovingShape(this.#left + 1, this.#top);
+  }
 }
