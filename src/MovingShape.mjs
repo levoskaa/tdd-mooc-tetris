@@ -6,6 +6,10 @@ export class MovingShape {
     return this.#left;
   }
 
+  get top() {
+    return this.#top;
+  }
+
   constructor(left = 0, top = 0) {
     this.#left = left;
     this.#top = top;
