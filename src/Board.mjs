@@ -70,7 +70,7 @@ export class Board {
       for (let col = 0; col < this.#shape.width; col++) {
         const cell = this.#shape.cellAt(row, col);
         if (cell !== EMPTY_CELL) {
-          this.#cells[this.#shapeY + row][this.#shapeX + col] = cell;
+          this.#cells[this.#shapeY + row][this.#shape.left + col] = cell;
         }
       }
     }
