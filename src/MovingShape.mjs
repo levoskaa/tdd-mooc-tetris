@@ -14,4 +14,8 @@ export class MovingShape {
   moveTo(row, col) {
     return new MovingShape(row, col);
   }
+
+  moveLeft() {
+    return new MovingShape(this.#left - 1, this.#top);
+  }
 }
