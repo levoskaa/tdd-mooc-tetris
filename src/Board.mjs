@@ -96,7 +96,7 @@ export class Board {
   }
 
   #isRowInShape(row) {
-    return row >= this.#shapeY && row < this.#shapeY + this.#shape.height;
+    return row >= this.#shape.top && row < this.#shape.top + this.#shape.height;
   }
 
   #isColInShape(col) {
