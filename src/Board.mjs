@@ -46,8 +46,10 @@ export class Board {
     if (this.#reachedBottom() || this.#collidedWithBlock()) {
       this.#fixInPlace();
       this.#shape = null;
+      return;
     }
     this.#shapeY++;
+    this.#shape.moveDown();
   }
 
   #reachedBottom() {
