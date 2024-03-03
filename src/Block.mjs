@@ -16,6 +16,10 @@ export class Block {
     return this.#movingShape.left;
   }
 
+  get top() {
+    return this.#movingShape.top;
+  }
+
   constructor(cell, row, col) {
     this.#cell = cell;
     this.#movingShape = new MovingShape(row, col);
