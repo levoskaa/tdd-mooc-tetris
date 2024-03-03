@@ -22,4 +22,17 @@ describe("Moving tetrominoes", () => {
        ..........`
     );
   });
+
+  test("can be moved right", () => {
+    board.moveRight();
+
+    expect(board.toString()).to.equalShape(
+      `.....T....
+       ....TTT...
+       ..........
+       ..........
+       ..........
+       ..........`
+    );
+  });
 });
