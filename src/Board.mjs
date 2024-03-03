@@ -8,7 +8,6 @@ export class Board {
   #height;
   #shape;
   #cells;
-  #shapeX;
   #shapeY;
 
   get width() {
@@ -36,7 +35,6 @@ export class Board {
       shape = new Block(shape, 0, 0);
     }
     this.#shape = shape;
-    this.#shapeX = Math.floor((this.#width - this.#shape.width) / 2);
     this.#shapeY = 0;
     this.#shape.moveTo(Math.floor((this.#width - this.#shape.width) / 2), 0);
   }
