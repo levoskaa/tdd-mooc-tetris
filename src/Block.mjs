@@ -1,5 +1,8 @@
+import { MovingShape } from "./MovingShape.mjs";
+
 export class Block {
   #cell;
+  #movingShape;
 
   get width() {
     return 1;
@@ -9,8 +12,9 @@ export class Block {
     return 1;
   }
 
-  constructor(cell) {
+  constructor(cell, row, col) {
     this.#cell = cell;
+    this.#movingShape = new MovingShape(row, col);
   }
 
   cellAt(row, col) {

@@ -33,7 +33,7 @@ export class Board {
       throw new Error("A shape is already falling");
     }
     if (typeof shape === "string") {
-      shape = new Block(shape);
+      shape = new Block(shape, Math.floor((this.#width - this.#shape.width) / 2), 0);
     }
     this.#shape = shape;
     this.#shapeX = Math.floor((this.#width - this.#shape.width) / 2);
