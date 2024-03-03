@@ -53,7 +53,7 @@ export class Board {
   }
 
   #reachedBottom() {
-    return this.#shape.anyFilledCell((row, _) => this.#shapeY + row === this.#height - 1);
+    return this.#shape.anyFilledCell((row, _) => this.#shape.top + row === this.#height - 1);
   }
 
   #collidedWithBlock() {
