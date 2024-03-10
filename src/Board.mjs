@@ -33,8 +33,7 @@ export class Board {
     if (typeof shape === "string") {
       shape = Block.createAt(shape, 0, 0);
     }
-    this.#shape = shape;
-    this.#shape = this.#shape.moveTo(Math.floor((this.#width - this.#shape.width) / 2), 0);
+    this.#shape = shape.moveTo(Math.floor((this.#width - shape.width) / 2), 0);
   }
 
   tick() {
