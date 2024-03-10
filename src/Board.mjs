@@ -109,6 +109,6 @@ export class Board {
   }
 
   moveDown() {
-    this.#shape.moveDown();
+    this.#shape = this.#shape.moveDown();
   }
 }

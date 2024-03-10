@@ -53,6 +53,7 @@ export class Block {
 
   moveDown() {
     this.#movingShape = this.#movingShape.moveDown();
+    return this;
   }
 
   toString() {
