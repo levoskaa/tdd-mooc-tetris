@@ -31,7 +31,7 @@ export class Board {
       throw new Error("A shape is already falling");
     }
     if (typeof shape === "string") {
-      shape = new Block(shape, 0, 0);
+      shape = Block.createAt(shape, 0, 0);
     }
     this.#shape = shape;
     this.#shape = this.#shape.moveTo(Math.floor((this.#width - this.#shape.width) / 2), 0);

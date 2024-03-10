@@ -20,9 +20,13 @@ export class Block {
     return this.#movingShape.top;
   }
 
-  constructor(cell, row, col) {
+  constructor(cell, movingShape) {
     this.#cell = cell;
-    this.#movingShape = new MovingShape(row, col);
+    this.#movingShape = movingShape;
+  }
+
+  static createAt(cell, row, col) {
+    return new Block(cell, new MovingShape(row, col));
   }
 
   cellAt(row, col) {
@@ -36,11 +40,11 @@ export class Block {
   }
 
   moveTo(row, col) {
-    return new Block(this.#cell, row, col);
+    return Block.createAt(this.#cell, row, col);
   }
 
   moveLeft() {
-    return new Block(this.#cell, this.#movingShape.row, this.#movingShape.col);
+    return new Block(this.#cell, this.#movingShape.moveLeft());
   }
 
   moveRight() {
