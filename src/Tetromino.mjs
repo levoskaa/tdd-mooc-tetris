@@ -110,8 +110,7 @@ export class Tetromino {
   }
 
   moveLeft() {
-    this.#movingShape = this.#movingShape.moveLeft();
-    return this;
+    return new Tetromino(this.#orientations, this.#index, this.#movingShape.moveLeft());
   }
 
   moveRight() {

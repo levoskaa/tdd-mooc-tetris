@@ -40,8 +40,7 @@ export class Block {
   }
 
   moveLeft() {
-    this.#movingShape = this.#movingShape.moveLeft();
-    return this;
+    return new Block(this.#cell, this.#movingShape.row, this.#movingShape.col);
   }
 
   moveRight() {
