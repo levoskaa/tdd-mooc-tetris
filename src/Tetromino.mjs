@@ -83,7 +83,7 @@ export class Tetromino {
     if (!this.#isIndexValid(newIndex)) {
       newIndex = fallbackIndex;
     }
-    return new Tetromino(this.#orientations, newIndex);
+    return new Tetromino(this.#orientations, newIndex, this.#movingShape);
   }
 
   #isIndexValid(index) {
