@@ -36,8 +36,7 @@ export class Block {
   }
 
   moveTo(row, col) {
-    this.#movingShape = this.#movingShape.moveTo(row, col);
-    return this;
+    return new Block(this.#cell, row, col);
   }
 
   moveLeft() {
