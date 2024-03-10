@@ -45,6 +45,7 @@ export class Block {
 
   moveRight() {
     this.#movingShape = this.#movingShape.moveRight();
+    return this;
   }
 
   moveDown() {
