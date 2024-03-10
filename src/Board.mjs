@@ -45,7 +45,7 @@ export class Board {
       this.#shape = null;
       return;
     }
-    this.#shape.moveDown();
+    this.#shape = this.#shape.moveDown();
   }
 
   #reachedBottom() {

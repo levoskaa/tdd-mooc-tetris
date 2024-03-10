@@ -52,8 +52,7 @@ export class Block {
   }
 
   moveDown() {
-    this.#movingShape = this.#movingShape.moveDown();
-    return this;
+    return new Block(this.#cell, this.#movingShape.moveDown());
   }
 
   toString() {
