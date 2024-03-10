@@ -34,7 +34,7 @@ export class Board {
       shape = new Block(shape, 0, 0);
     }
     this.#shape = shape;
-    this.#shape.moveTo(Math.floor((this.#width - this.#shape.width) / 2), 0);
+    this.#shape = this.#shape.moveTo(Math.floor((this.#width - this.#shape.width) / 2), 0);
   }
 
   tick() {

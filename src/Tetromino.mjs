@@ -107,6 +107,7 @@ export class Tetromino {
 
   moveTo(row, col) {
     this.#movingShape = this.#movingShape.moveTo(row, col);
+    return this;
   }
 
   moveLeft() {
